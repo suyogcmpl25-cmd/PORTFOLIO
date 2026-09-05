@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { ArrowUpRight, X, Layers, Wrench, TrendingUp } from 'lucide-react';
 import type { ProjectData } from '@/types';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -190,31 +190,6 @@ function ProjectCardLarge({
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const { ref, visible } = useScrollReveal<HTMLDivElement>();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollState, setScrollState] = useState({ progress: 0, sectionIndex: 0 });
-
-  useEffect(() => {
-    let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const el = containerRef.current;
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const total = el.offsetHeight - window.innerHeight;
-        const scrolled = Math.max(0, -rect.top);
-        const progress = Math.max(0, Math.min(1, scrolled / total));
-        const sectionIndex = Math.min(PROJECTS.length - 1, Math.floor(progress * PROJECTS.length));
-        setScrollState({ progress, sectionIndex });
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
 
   return (
     <section id="projects" className="relative">
@@ -230,55 +205,20 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Desktop pinned stacking */}
-      <div ref={containerRef} className="hidden lg:block relative" style={{ height: `${PROJECTS.length * 100}vh` }}>
-        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-          {PROJECTS.map((project, i) => {
-            const stagePosition = scrollState.progress * (PROJECTS.length - 1);
-            const activeIndex = Math.min(PROJECTS.length - 1, Math.floor(stagePosition));
-            const transitionProgress = stagePosition - activeIndex;
-
-            let translateY = 35;
-            let opacity = 0;
-            let scale = 0.98;
-            let zIndex = 1;
-
-            if (i < activeIndex) {
-              translateY = -10;
-              opacity = 0.35;
-              scale = 0.97;
-              zIndex = i + 1;
-            } else if (i === activeIndex) {
-              translateY = -transitionProgress * 18;
-              opacity = 1;
-              scale = 1 - transitionProgress * 0.02;
-              zIndex = PROJECTS.length + 1;
-            } else if (i === activeIndex + 1) {
-              translateY = (1 - transitionProgress) * 35;
-              opacity = transitionProgress;
-              scale = 0.98 + transitionProgress * 0.02;
-              zIndex = PROJECTS.length + 2;
-            }
-
-            return (
-              <div
-                key={project.id}
-                className="absolute inset-0 flex items-center justify-center"
-                style={{
-                  transform: `translateY(${translateY}%) scale(${scale})`,
-                  opacity,
-                  zIndex,
-                  transition: 'transform 0.12s linear, opacity 0.12s linear',
-                }}
-              >
-                <ProjectCardLarge
-                  project={project}
-                  onOpen={() => setSelectedProject(project)}
-                />
-              </div>
-            );
-          })}
-        </div>
+      {/* Desktop sticky stacking */}
+      <div className="hidden lg:block">
+        {PROJECTS.map((project, i) => (
+          <div
+            key={project.id}
+            className="sticky top-0 h-screen flex items-center justify-center"
+            style={{ zIndex: i + 1 }}
+          >
+            <ProjectCardLarge
+              project={project}
+              onOpen={() => setSelectedProject(project)}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Mobile vertical cards */}

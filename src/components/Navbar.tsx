@@ -46,7 +46,7 @@ export default function Navbar({ onBookAudit }: NavbarProps) {
             <Zap className="w-4 h-4 text-accent-400" strokeWidth={2.5} />
           </div>
           <span className="font-display font-semibold text-sm tracking-wide text-ink-50">
-            Suyog S. Patil
+            SUYOG S. PATIL
           </span>
         </a>
 

@@ -234,30 +234,30 @@ export default function Projects() {
       <div ref={containerRef} className="hidden lg:block relative" style={{ height: `${PROJECTS.length * 100}vh` }}>
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
           {PROJECTS.map((project, i) => {
-            const N = PROJECTS.length;
-            const distance = scrollState.progress * N - i;
+            const stagePosition = scrollState.progress * (PROJECTS.length - 1);
+            const activeIndex = Math.min(PROJECTS.length - 1, Math.floor(stagePosition));
+            const transitionProgress = stagePosition - activeIndex;
 
-            let translateY = 0;
-            let opacity = 1;
-            let scale = 1;
+            let translateY = 35;
+            let opacity = 0;
+            let scale = 0.98;
+            let zIndex = 1;
 
-            if (distance < -0.3) {
-              translateY = 30;
-              opacity = 0;
-            } else if (distance < 0) {
-              const enterP = (distance + 0.3) / 0.3;
-              translateY = (1 - enterP) * 30;
-              opacity = enterP;
-            } else if (distance < 0.7 || i === N - 1) {
-              translateY = 0;
-              opacity = 1;
-            } else if (distance < 1.0) {
-              const exitP = (distance - 0.7) / 0.3;
-              opacity = 1 - exitP * 0.5;
-              scale = 1 - exitP * 0.03;
-            } else {
-              opacity = 0.5;
+            if (i < activeIndex) {
+              translateY = -10;
+              opacity = 0.35;
               scale = 0.97;
+              zIndex = i + 1;
+            } else if (i === activeIndex) {
+              translateY = -transitionProgress * 18;
+              opacity = 1;
+              scale = 1 - transitionProgress * 0.02;
+              zIndex = PROJECTS.length + 1;
+            } else if (i === activeIndex + 1) {
+              translateY = (1 - transitionProgress) * 35;
+              opacity = transitionProgress;
+              scale = 0.98 + transitionProgress * 0.02;
+              zIndex = PROJECTS.length + 2;
             }
 
             return (
@@ -267,7 +267,8 @@ export default function Projects() {
                 style={{
                   transform: `translateY(${translateY}%) scale(${scale})`,
                   opacity,
-                  zIndex: i + 1,
+                  zIndex,
+                  transition: 'transform 0.12s linear, opacity 0.12s linear',
                 }}
               >
                 <ProjectCardLarge

@@ -231,32 +231,33 @@ export default function Projects() {
       </div>
 
       {/* Desktop pinned stacking */}
-      <div ref={containerRef} className="hidden lg:block relative" style={{ height: `${PROJECTS.length * 120}vh` }}>
+      <div ref={containerRef} className="hidden lg:block relative" style={{ height: `${PROJECTS.length * 100}vh` }}>
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
           {PROJECTS.map((project, i) => {
-            const segmentSize = 1 / PROJECTS.length;
-            const segStart = i * segmentSize;
+            const N = PROJECTS.length;
+            const distance = scrollState.progress * N - i;
 
             let translateY = 0;
             let opacity = 1;
             let scale = 1;
 
-            if (i === 0) {
-              const fadeProgress = Math.max(0, Math.min(1, (scrollState.progress - segStart - segmentSize * 0.6) / (segmentSize * 0.4)));
-              opacity = 1 - fadeProgress * 0.5;
-              scale = 1 - fadeProgress * 0.03;
+            if (distance < -0.3) {
+              translateY = 30;
+              opacity = 0;
+            } else if (distance < 0) {
+              const enterP = (distance + 0.3) / 0.3;
+              translateY = (1 - enterP) * 30;
+              opacity = enterP;
+            } else if (distance < 0.7 || i === N - 1) {
+              translateY = 0;
+              opacity = 1;
+            } else if (distance < 1.0) {
+              const exitP = (distance - 0.7) / 0.3;
+              opacity = 1 - exitP * 0.5;
+              scale = 1 - exitP * 0.03;
             } else {
-              const enterStart = (i - 1) * segmentSize + segmentSize * 0.5;
-              const enterProgress = Math.max(0, Math.min(1, (scrollState.progress - enterStart) / (segmentSize * 0.5)));
-              translateY = (1 - enterProgress) * 35;
-              opacity = enterProgress;
-
-              if (i < PROJECTS.length - 1) {
-                const fadeStart = segStart + segmentSize * 0.6;
-                const fadeProgress = Math.max(0, Math.min(1, (scrollState.progress - fadeStart) / (segmentSize * 0.4)));
-                opacity = Math.min(opacity, 1 - fadeProgress * 0.5);
-                scale = 1 - fadeProgress * 0.03;
-              }
+              opacity = 0.5;
+              scale = 0.97;
             }
 
             return (
@@ -267,7 +268,6 @@ export default function Projects() {
                   transform: `translateY(${translateY}%) scale(${scale})`,
                   opacity,
                   zIndex: i + 1,
-                  transition: 'transform 0.15s ease-out, opacity 0.15s ease-out',
                 }}
               >
                 <ProjectCardLarge

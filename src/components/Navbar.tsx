@@ -45,8 +45,11 @@ export default function Navbar({ onBookAudit }: NavbarProps) {
           <div className="w-8 h-8 rounded-lg bg-accent-500/10 border border-accent-500/30 flex items-center justify-center group-hover:bg-accent-500/20 transition-colors">
             <Zap className="w-4 h-4 text-accent-400" strokeWidth={2.5} />
           </div>
-          <span className="font-display font-semibold text-sm tracking-wide text-ink-50">
+          <span className="font-display font-semibold text-sm tracking-wide leading-tight text-ink-50">
             SUYOG S. PATIL
+            <span className="block mt-0.5 text-[9px] font-mono font-normal tracking-[0.16em] text-accent-400">
+              AI AUTOMATION BUILDER
+            </span>
           </span>
         </a>
 

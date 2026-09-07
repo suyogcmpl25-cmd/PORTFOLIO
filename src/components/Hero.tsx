@@ -26,9 +26,13 @@ export default function Hero({ scrollProgress, onBookAudit }: HeroProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-500" />
-              <span className="text-xs font-mono tracking-widest text-ink-100">AI AUTOMATION BUILDER</span>
+            <div className="space-y-2">
+              <div className="font-display text-sm font-semibold tracking-[0.2em] text-ink-50">
+                SUYOG S. PATIL
+              </div>
+              <div className="text-xs font-mono tracking-[0.28em] text-accent-400">
+                AI AUTOMATION BUILDER
+              </div>
             </div>
 
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-ink-50">

@@ -145,7 +145,7 @@ export default function AuditModal({ isOpen, onClose }: AuditModalProps) {
                   onChange={(e) => setForm({ ...form, automation: e.target.value })}
                   className={`${inputClass} resize-none`}
                   rows={3}
-                  placeholder="Describe the repetitive task or process..."
+                  placeholder="Tell me what you're currently doing manually..."
                   required
                 />
               </div>

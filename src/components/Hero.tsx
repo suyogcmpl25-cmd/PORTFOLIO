@@ -26,15 +26,6 @@ export default function Hero({ scrollProgress, onBookAudit }: HeroProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 max-w-xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-              </span>
-              <span className="text-[11px] font-mono tracking-[0.18em] text-emerald-300/90">
-                AVAILABLE FOR NEW PROJECTS
-              </span>
-            </div>
 
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-ink-50">
               I build automations that take{' '}

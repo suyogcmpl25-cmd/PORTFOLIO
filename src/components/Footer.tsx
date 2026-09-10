@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-6 border-t border-white/5">
-          <p className="text-xs text-ink-400 font-mono">© Suyog S. Patil</p>
+          <p className="text-xs text-ink-300 font-mono">© Suyog S. Patil</p>
         </div>
       </div>
     </footer>

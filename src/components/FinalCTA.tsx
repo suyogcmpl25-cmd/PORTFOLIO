@@ -30,7 +30,7 @@ export default function FinalCTA({ onBookAudit }: FinalCTAProps) {
             <p className="text-base lg:text-lg text-ink-200 mt-6 max-w-xl mx-auto leading-relaxed">
               Tell me what you're doing manually. I'll show you what can be automated.
             </p>
-            <p className="text-sm text-ink-300 mt-3">
+            <p className="text-sm text-ink-200 mt-3">
               Working with businesses worldwide.
             </p>
 

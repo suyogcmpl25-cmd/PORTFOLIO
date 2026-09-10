@@ -47,7 +47,7 @@ export default function Navbar({ onBookAudit }: NavbarProps) {
           </div>
           <span className="font-display font-semibold text-sm tracking-wide leading-tight text-ink-50">
             SUYOG S. PATIL
-            <span className="block mt-0.5 text-[9px] font-mono font-normal tracking-[0.16em] text-accent-400">
+            <span className="block mt-0.5 text-[9px] font-mono font-normal italic tracking-[0.16em] text-accent-400">
               AI AUTOMATION BUILDER
             </span>
           </span>

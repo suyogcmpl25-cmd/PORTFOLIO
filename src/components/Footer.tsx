@@ -25,6 +25,9 @@ export default function Footer() {
             <div>
               <p className="font-display font-semibold text-sm text-ink-50">Suyog S. Patil</p>
               <p className="text-xs text-ink-300 mt-0.5">AI Automation Builder</p>
+              <p className="text-xs text-ink-400 mt-2">
+                Based in India · Working with businesses worldwide
+              </p>
             </div>
           </div>
 

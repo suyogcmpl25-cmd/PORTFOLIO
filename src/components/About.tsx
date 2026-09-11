@@ -23,13 +23,13 @@ export default function About() {
             </div>
             <div className="flex-1">
               <p className="text-lg text-ink-50 leading-relaxed">
-                I am Suyog, an independent AI automation builder focused on turning repetitive business tasks into simple systems that run automatically.
+                 I’m Suyog, an independent AI automation builder focused on helping businesses turn repetitive processes into reliable systems that work in the background.
               </p>
             </div>
           </div>
 
           <p className="text-base text-ink-200 leading-relaxed pl-0 lg:pl-[4.5rem]">
-            I work with automation platforms, AI models and everyday business tools to build practical workflows that save time, improve response speed and reduce manual work.
+            I combine automation platforms, AI and the tools businesses already use to build practical workflows for lead management, customer communication and everyday operations. My focus is simple: reduce manual work, improve efficiency and create systems that are useful in the real world. I work with businesses worldwide.
           </p>
         </div>
       </div>

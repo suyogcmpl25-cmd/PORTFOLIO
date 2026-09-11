@@ -43,7 +43,14 @@ export default function Footer() {
               </a>
             ))}
           </nav>
-        </div>
+
+          <a
+            href="mailto:hello.suyogpatil@gmail.com"
+            className="text-xs font-medium text-ink-200 hover:text-ink-50 transition-colors"
+          >
+            Email
+          </a>
+          </div>
 
         <div className="mt-8 pt-6 border-t border-white/5">
           <p className="text-xs text-ink-300 font-mono">© Suyog S. Patil</p>

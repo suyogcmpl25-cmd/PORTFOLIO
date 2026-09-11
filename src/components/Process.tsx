@@ -1,10 +1,26 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const STEPS = [
-  { number: '01', title: 'Understand', description: 'I learn how the process currently works and identify repetitive tasks.' },
-  { number: '02', title: 'Design', description: 'I design a simple automation around the actual business workflow.' },
-  { number: '03', title: 'Build', description: 'I connect the required tools, APIs and AI services.' },
-  { number: '04', title: 'Deploy', description: 'I test the system, deploy it and improve it when needed.' },
+  {
+    number: '01',
+    title: 'Understand',
+    description: 'I analyze your current workflow, identify bottlenecks and find the repetitive tasks worth automating.',
+  },
+  {
+    number: '02',
+    title: 'Design',
+    description: 'I design a practical automation around your existing process, tools and business requirements.',
+  },
+  {
+    number: '03',
+    title: 'Build',
+    description: 'I connect the required apps, APIs and AI services to turn the design into a working system.',
+  },
+  {
+    number: '04',
+    title: 'Deploy',
+    description: 'I test the automation, launch it into your workflow and provide ongoing support when needed.',
+  },
 ];
 
 export default function Process() {

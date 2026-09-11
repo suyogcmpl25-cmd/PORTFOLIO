@@ -28,13 +28,13 @@ export default function Hero({ scrollProgress, onBookAudit }: HeroProps) {
           <div className="space-y-6 max-w-xl">
 
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-ink-50">
-              I build automations that take{' '}
+              I build automations that turn{' '}
               <span className="text-accent-gradient">repetitive work</span>{' '}
-              off your plate.
+              into efficient systems.
             </h1>
 
             <p className="text-base lg:text-lg text-ink-200 leading-relaxed max-w-lg">
-              I design practical systems that help businesses handle customer communication, follow-ups, email and repetitive operations with less manual work.
+              I design practical AI automation systems that help businesses streamline lead management, customer communication, and repetitive operations — so your team can spend less time on manual work and more time growing the business.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">

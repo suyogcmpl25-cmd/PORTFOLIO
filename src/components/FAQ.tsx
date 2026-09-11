@@ -5,23 +5,31 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 const FAQS = [
   {
     question: 'What kind of businesses do you work with?',
-    answer: 'I work with businesses that have repetitive manual processes, customer communication or administrative work that can be automated.',
+    answer: 'I work with businesses that have repetitive manual processes, customer communication or administrative work that can be improved through automation.',
   },
   {
     question: 'What can you automate?',
-    answer: 'Customer follow-ups, email workflows, lead handling, data processing, reporting, invoices and other repetitive business processes.',
+    answer: 'Lead capture and qualification, customer follow-ups, email workflows, data processing, reporting, document workflows, invoices and other repetitive business processes.',
   },
   {
     question: 'Can you work with my existing tools?',
-    answer: 'Yes. I can design automations around the tools your business already uses whenever integrations are available.',
+    answer: 'Yes. I design automations around the tools your business already uses whenever the required integrations are available.',
+  },
+  {
+    question: 'How much does an automation cost?',
+    answer: 'Every automation is different. Pricing depends on the workflow complexity, number of integrations, AI requirements and business needs. After understanding your process, I provide a clear project quote before development begins.',
   },
   {
     question: 'How long does an automation take?',
-    answer: 'It depends on the workflow. Simple automations can be built quickly, while larger systems require more planning, testing and refinement.',
+    answer: 'It depends on the workflow. Simple automations can be built quickly, while larger systems require more planning, testing and refinement. I will give you a realistic timeline before development starts.',
   },
   {
     question: 'Do you provide support after launch?',
-    answer: 'Yes. Automation systems can be monitored, maintained and improved after deployment.',
+    answer: 'Yes. I offer ongoing monitoring, maintenance, troubleshooting and improvements through monthly support plans. The first month of support is free for my first client.',
+  },
+  {
+    question: 'What happens after I contact you?',
+    answer: 'We start with a free automation audit to understand your current process, identify opportunities for automation and determine what would provide the most value. If we are a good fit, I provide a clear proposal and project quote.',
   },
 ];
 

@@ -27,12 +27,12 @@ const PROJECTS: ProjectData[] = [
   {
     id: 'p3',
     number: '03',
-    title: 'Automated Invoice Generator',
-    problem: 'Creating invoices manually is repetitive and time-consuming.',
-    built: 'A workflow that takes information from Google Sheets, cleans the data, generates an invoice number, fills a Google Docs template, creates a PDF and prepares the invoice email.',
-    value: 'Turns a repetitive invoice process into an automated workflow.',
-    tags: ['n8n', 'Google Sheets', 'Google Docs', 'Gmail'],
-    imageUrl: 'https://images.pexels.com/photos/7651555/pexels-photo-7651555.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    title: 'Lead Capture & Qualification System',
+    problem: 'Potential leads can be lost when inquiries are not captured, organized and followed up quickly.',
+    built: 'An automated lead-handling system that captures incoming inquiries, qualifies leads using AI, organizes lead information and triggers the appropriate follow-up.',
+    value: 'Faster lead response, better organization and fewer opportunities lost to manual lead handling.',
+    tags: ['n8n', 'Gmail', 'OpenAI', 'Google Sheets'],
+    imageUrl: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
 ];
 

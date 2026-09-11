@@ -4,9 +4,19 @@ import type { ProjectData } from '@/types';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const PROJECTS: ProjectData[] = [
+   {
+    id: 'p3',
+    number: '01',
+    title: 'Lead Capture & Qualification System',
+    problem: 'Potential leads can be lost when inquiries are not captured, organized and followed up quickly.',
+    built: 'An automated lead-handling system that captures incoming inquiries, qualifies leads using AI, organizes lead information and triggers the appropriate follow-up.',
+    value: 'Faster lead response, better organization and fewer opportunities lost to manual lead handling.',
+    tags: ['n8n', 'Gmail', 'OpenAI', 'Google Sheets'],
+    imageUrl: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  },
   {
     id: 'p1',
-    number: '01',
+    number: '02',
     title: 'Restaurant Automation Suite',
     problem: 'Restaurants can lose leads through missed calls, slow follow-ups and inconsistent customer communication.',
     built: 'A collection of automations for missed-call handling, customer feedback, review requests, AI sentiment analysis, review replies and customer win-back campaigns.',
@@ -16,23 +26,13 @@ const PROJECTS: ProjectData[] = [
   },
   {
     id: 'p2',
-    number: '02',
+    number: '03',
     title: 'AI Email Reply System',
     problem: 'Businesses spend valuable time reading repetitive emails and writing similar responses.',
     built: 'An AI workflow that classifies incoming emails, drafts appropriate responses and sends them for human approval before sending.',
     value: 'Faster email handling while keeping a human in control.',
     tags: ['n8n', 'OpenAI', 'Gmail', 'Google Sheets'],
     imageUrl: 'https://images.pexels.com/photos/7821760/pexels-photo-7821760.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  },
-  {
-    id: 'p3',
-    number: '03',
-    title: 'Lead Capture & Qualification System',
-    problem: 'Potential leads can be lost when inquiries are not captured, organized and followed up quickly.',
-    built: 'An automated lead-handling system that captures incoming inquiries, qualifies leads using AI, organizes lead information and triggers the appropriate follow-up.',
-    value: 'Faster lead response, better organization and fewer opportunities lost to manual lead handling.',
-    tags: ['n8n', 'Gmail', 'OpenAI', 'Google Sheets'],
-    imageUrl: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
 ];
 

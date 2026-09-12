@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     question: 'Do you provide support after launch?',
-    answer: 'Yes. I offer ongoing monitoring, maintenance, troubleshooting and improvements through monthly support plans. The first month of support is free for my first client.',
+    answer: 'Yes. I offer ongoing monitoring, maintenance, troubleshooting and improvements through monthly support plans. The first month of support is free for my clients.',
   },
   {
     question: 'What happens after I contact you?',

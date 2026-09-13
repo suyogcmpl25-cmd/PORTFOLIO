@@ -90,7 +90,6 @@ function ProjectModal({
                 PROBLEM
               </span>
             </div>
-
             <p className="text-sm text-ink-100 leading-relaxed pl-8">
               {project.problem}
             </p>
@@ -105,7 +104,6 @@ function ProjectModal({
                 WHAT I BUILT
               </span>
             </div>
-
             <p className="text-sm text-ink-100 leading-relaxed pl-8">
               {project.built}
             </p>
@@ -120,7 +118,6 @@ function ProjectModal({
                 VALUE
               </span>
             </div>
-
             <p className="text-sm text-ink-100 leading-relaxed pl-8">
               {project.value}
             </p>
@@ -251,14 +248,11 @@ export default function Projects() {
       >
         <div className="mb-14 lg:mb-20">
           <span className="section-label">Portfolio</span>
-
           <h2 className="font-display text-3xl lg:text-4xl font-bold mt-3 text-ink-50">
             Selected Work
           </h2>
-
           <p className="text-ink-200 mt-3 max-w-lg">
-            A few automation systems I've built to solve real repetitive
-            business problems.
+            A few automation systems I've built to solve real repetitive business problems.
           </p>
         </div>
       </div>

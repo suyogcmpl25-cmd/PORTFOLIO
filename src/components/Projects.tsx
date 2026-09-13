@@ -36,14 +36,32 @@ const PROJECTS: ProjectData[] = [
   },
 ];
 
+const PROJECT_SCREENSHOTS: Record<string, string[]> = {
+  p3: [
+    '/lead-workflow.png',
+    '/lead-classify.png',
+    '/lead-llm-chain.png',
+  ],
+  p1: [
+    '/Feedback Routing + Review Reply.png',
+    '/Post-Visit Review Request.png',
+    '/Feedback sheet.png',
+  ],
+  p2: [
+    '/AI Email Reply.png',
+  ],
+};
+
 function ProjectModal({ project, onClose }: { project: ProjectData; onClose: () => void }) {
+  const screenshots = PROJECT_SCREENSHOTS[project.id] || [];
+
   return (
     <div
       className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="glass-strong rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 relative"
+        className="glass-strong rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-8 relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -106,6 +124,33 @@ function ProjectModal({ project, onClose }: { project: ProjectData; onClose: () 
               ))}
             </div>
           </div>
+
+          {screenshots.length > 0 && (
+            <div className="pt-6">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-mono tracking-widest text-ink-300">
+                  SYSTEM SCREENSHOTS
+                </span>
+                <div className="h-px flex-1 bg-white/5" />
+              </div>
+
+              <div className="space-y-5">
+                {screenshots.map((screenshot, index) => (
+                  <div
+                    key={screenshot}
+                    className="overflow-hidden rounded-xl border border-white/10 bg-ink-900"
+                  >
+                    <img
+                      src={screenshot}
+                      alt={`${project.title} screenshot ${index + 1}`}
+                      className="w-full h-auto block"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -140,10 +185,12 @@ function ProjectCardLarge({
                 <span className="text-xs font-mono tracking-widest text-red-400/70">PROBLEM</span>
                 <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.problem}</p>
               </div>
+
               <div>
                 <span className="text-xs font-mono tracking-widest text-accent-400/70">WHAT I BUILT</span>
                 <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.built}</p>
               </div>
+
               <div>
                 <span className="text-xs font-mono tracking-widest text-green-400/70">VALUE</span>
                 <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.value}</p>
@@ -166,8 +213,10 @@ function ProjectCardLarge({
               className="absolute inset-0 w-full h-full object-cover opacity-40"
               loading="lazy"
             />
+
             <div className="absolute inset-0 bg-gradient-to-br from-ink-900/80 via-ink-900/40 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-transparent to-transparent" />
+
             <div className="absolute bottom-6 left-6 right-6 z-10">
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
@@ -230,21 +279,26 @@ export default function Projects() {
                 <span className="font-mono text-sm text-accent-400 tracking-widest">{project.number}</span>
                 <div className="h-px w-12 bg-accent-500/30" />
               </div>
+
               <h3 className="font-display text-xl font-bold text-ink-50">{project.title}</h3>
+
               <div className="space-y-3">
                 <div>
                   <span className="text-xs font-mono tracking-widest text-red-400/70">PROBLEM</span>
                   <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.problem}</p>
                 </div>
+
                 <div>
                   <span className="text-xs font-mono tracking-widest text-accent-400/70">WHAT I BUILT</span>
                   <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.built}</p>
                 </div>
+
                 <div>
                   <span className="text-xs font-mono tracking-widest text-green-400/70">VALUE</span>
                   <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.value}</p>
                 </div>
               </div>
+
               <button
                 onClick={() => setSelectedProject(project)}
                 className="group inline-flex items-center gap-1.5 text-sm font-medium text-accent-400 hover:text-accent-300 transition-colors"

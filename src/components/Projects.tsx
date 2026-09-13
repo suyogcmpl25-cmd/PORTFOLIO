@@ -4,61 +4,64 @@ import type { ProjectData } from '@/types';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const PROJECTS: ProjectData[] = [
-  {
+   {
     id: 'p3',
     number: '01',
     title: 'Lead Capture & Qualification System',
-    problem:
-      'Potential leads can be lost when inquiries are not captured, organized and followed up quickly.',
-    built:
-      'An automated lead-handling system that captures incoming inquiries, qualifies leads using AI, organizes lead information and triggers the appropriate follow-up.',
-    value:
-      'Faster lead response, better organization and fewer opportunities lost to manual lead handling.',
+    problem: 'Potential leads can be lost when inquiries are not captured, organized and followed up quickly.',
+    built: 'An automated lead-handling system that captures incoming inquiries, qualifies leads using AI, organizes lead information and triggers the appropriate follow-up.',
+    value: 'Faster lead response, better organization and fewer opportunities lost to manual lead handling.',
     tags: ['n8n', 'Gmail', 'OpenAI', 'Google Sheets'],
-    imageUrl: '/lead-workflow.png',
+    imageUrl: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
   {
     id: 'p1',
     number: '02',
     title: 'Restaurant Automation Suite',
-    problem:
-      'Restaurants can lose leads through missed calls, slow follow-ups and inconsistent customer communication.',
-    built:
-      'A collection of automations for missed-call handling, customer feedback, review requests, AI sentiment analysis, review replies and customer win-back campaigns.',
-    value:
-      'Less manual customer communication and faster follow-up.',
+    problem: 'Restaurants can lose leads through missed calls, slow follow-ups and inconsistent customer communication.',
+    built: 'A collection of automations for missed-call handling, customer feedback, review requests, AI sentiment analysis, review replies and customer win-back campaigns.',
+    value: 'Less manual customer communication and faster follow-up.',
     tags: ['n8n', 'Twilio', 'OpenAI', 'Gmail'],
-    imageUrl: '/Feedback Routing + Review Reply.png',
+    imageUrl: 'https://images.pexels.com/photos/4921260/pexels-photo-4921260.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
   {
     id: 'p2',
     number: '03',
     title: 'AI Email Reply System',
-    problem:
-      'Businesses spend valuable time reading repetitive emails and writing similar responses.',
-    built:
-      'An AI workflow that classifies incoming emails, drafts appropriate responses and sends them for human approval before sending.',
-    value:
-      'Faster email handling while keeping a human in control.',
+    problem: 'Businesses spend valuable time reading repetitive emails and writing similar responses.',
+    built: 'An AI workflow that classifies incoming emails, drafts appropriate responses and sends them for human approval before sending.',
+    value: 'Faster email handling while keeping a human in control.',
     tags: ['n8n', 'OpenAI', 'Gmail', 'Google Sheets'],
-    imageUrl: '/AI Email Reply.png',
+    imageUrl: 'https://images.pexels.com/photos/7821760/pexels-photo-7821760.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
 ];
 
-function ProjectModal({
-  project,
-  onClose,
-}: {
-  project: ProjectData;
-  onClose: () => void;
-}) {
+const PROJECT_SCREENSHOTS: Record<string, string[]> = {
+  p3: [
+    '/lead-workflow.png',
+    '/lead-classify.png',
+    '/lead-llm-chain.png',
+  ],
+  p1: [
+    '/Feedback Routing + Review Reply.png',
+    '/Post-Visit Review Request.png',
+    '/Feedback sheet updated.png',
+  ],
+  p2: [
+    '/AI Email Reply.png',
+  ],
+};
+
+function ProjectModal({ project, onClose }: { project: ProjectData; onClose: () => void }) {
+  const screenshots = PROJECT_SCREENSHOTS[project.id] || [];
+
   return (
     <div
       className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="glass-strong rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 relative"
+        className="glass-strong rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-8 relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -70,9 +73,7 @@ function ProjectModal({
         </button>
 
         <div className="flex items-center gap-3 mb-6">
-          <span className="font-mono text-xs text-accent-400 tracking-widest">
-            {project.number}
-          </span>
+          <span className="font-mono text-xs text-accent-400 tracking-widest">{project.number}</span>
           <div className="h-px flex-1 bg-gradient-to-r from-accent-500/30 to-transparent" />
         </div>
 
@@ -86,13 +87,9 @@ function ProjectModal({
               <div className="w-6 h-6 rounded bg-red-500/10 flex items-center justify-center">
                 <Layers className="w-3.5 h-3.5 text-red-400" />
               </div>
-              <span className="text-xs font-mono tracking-widest text-ink-300">
-                PROBLEM
-              </span>
+              <span className="text-xs font-mono tracking-widest text-ink-300">PROBLEM</span>
             </div>
-            <p className="text-sm text-ink-100 leading-relaxed pl-8">
-              {project.problem}
-            </p>
+            <p className="text-sm text-ink-100 leading-relaxed pl-8">{project.problem}</p>
           </div>
 
           <div>
@@ -100,13 +97,9 @@ function ProjectModal({
               <div className="w-6 h-6 rounded bg-accent-500/10 flex items-center justify-center">
                 <Wrench className="w-3.5 h-3.5 text-accent-400" />
               </div>
-              <span className="text-xs font-mono tracking-widest text-ink-300">
-                WHAT I BUILT
-              </span>
+              <span className="text-xs font-mono tracking-widest text-ink-300">WHAT I BUILT</span>
             </div>
-            <p className="text-sm text-ink-100 leading-relaxed pl-8">
-              {project.built}
-            </p>
+            <p className="text-sm text-ink-100 leading-relaxed pl-8">{project.built}</p>
           </div>
 
           <div>
@@ -114,13 +107,9 @@ function ProjectModal({
               <div className="w-6 h-6 rounded bg-green-500/10 flex items-center justify-center">
                 <TrendingUp className="w-3.5 h-3.5 text-green-400" />
               </div>
-              <span className="text-xs font-mono tracking-widest text-ink-300">
-                VALUE
-              </span>
+              <span className="text-xs font-mono tracking-widest text-ink-300">VALUE</span>
             </div>
-            <p className="text-sm text-ink-100 leading-relaxed pl-8">
-              {project.value}
-            </p>
+            <p className="text-sm text-ink-100 leading-relaxed pl-8">{project.value}</p>
           </div>
 
           <div className="pt-2">
@@ -135,6 +124,33 @@ function ProjectModal({
               ))}
             </div>
           </div>
+
+          {screenshots.length > 0 && (
+            <div className="pt-6">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-mono tracking-widest text-ink-300">
+                  SYSTEM SCREENSHOTS
+                </span>
+                <div className="h-px flex-1 bg-white/5" />
+              </div>
+
+              <div className="space-y-5">
+                {screenshots.map((screenshot, index) => (
+                  <div
+                    key={screenshot}
+                    className="overflow-hidden rounded-xl border border-white/10 bg-ink-900"
+                  >
+                    <img
+                      src={screenshot}
+                      alt={`${project.title} screenshot ${index + 1}`}
+                      className="w-full h-auto block"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -166,30 +182,18 @@ function ProjectCardLarge({
 
             <div className="space-y-4 pt-2">
               <div>
-                <span className="text-xs font-mono tracking-widest text-red-400/70">
-                  PROBLEM
-                </span>
-                <p className="text-sm text-ink-200 leading-relaxed mt-1">
-                  {project.problem}
-                </p>
+                <span className="text-xs font-mono tracking-widest text-red-400/70">PROBLEM</span>
+                <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.problem}</p>
               </div>
 
               <div>
-                <span className="text-xs font-mono tracking-widest text-accent-400/70">
-                  WHAT I BUILT
-                </span>
-                <p className="text-sm text-ink-200 leading-relaxed mt-1">
-                  {project.built}
-                </p>
+                <span className="text-xs font-mono tracking-widest text-accent-400/70">WHAT I BUILT</span>
+                <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.built}</p>
               </div>
 
               <div>
-                <span className="text-xs font-mono tracking-widest text-green-400/70">
-                  VALUE
-                </span>
-                <p className="text-sm text-ink-200 leading-relaxed mt-1">
-                  {project.value}
-                </p>
+                <span className="text-xs font-mono tracking-widest text-green-400/70">VALUE</span>
+                <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.value}</p>
               </div>
             </div>
 
@@ -233,19 +237,12 @@ function ProjectCardLarge({
 }
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] =
-    useState<ProjectData | null>(null);
-
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const { ref, visible } = useScrollReveal<HTMLDivElement>();
 
   return (
     <section id="projects" className="relative">
-      <div
-        ref={ref}
-        className={`max-w-7xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28 reveal ${
-          visible ? 'visible' : ''
-        }`}
-      >
+      <div ref={ref} className={`max-w-7xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28 reveal ${visible ? 'visible' : ''}`}>
         <div className="mb-14 lg:mb-20">
           <span className="section-label">Portfolio</span>
           <h2 className="font-display text-3xl lg:text-4xl font-bold mt-3 text-ink-50">
@@ -279,42 +276,26 @@ export default function Projects() {
           <div key={project.id} className="glass rounded-2xl overflow-hidden">
             <div className="p-6 space-y-4">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-sm text-accent-400 tracking-widest">
-                  {project.number}
-                </span>
+                <span className="font-mono text-sm text-accent-400 tracking-widest">{project.number}</span>
                 <div className="h-px w-12 bg-accent-500/30" />
               </div>
 
-              <h3 className="font-display text-xl font-bold text-ink-50">
-                {project.title}
-              </h3>
+              <h3 className="font-display text-xl font-bold text-ink-50">{project.title}</h3>
 
               <div className="space-y-3">
                 <div>
-                  <span className="text-xs font-mono tracking-widest text-red-400/70">
-                    PROBLEM
-                  </span>
-                  <p className="text-sm text-ink-200 leading-relaxed mt-1">
-                    {project.problem}
-                  </p>
+                  <span className="text-xs font-mono tracking-widest text-red-400/70">PROBLEM</span>
+                  <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.problem}</p>
                 </div>
 
                 <div>
-                  <span className="text-xs font-mono tracking-widest text-accent-400/70">
-                    WHAT I BUILT
-                  </span>
-                  <p className="text-sm text-ink-200 leading-relaxed mt-1">
-                    {project.built}
-                  </p>
+                  <span className="text-xs font-mono tracking-widest text-accent-400/70">WHAT I BUILT</span>
+                  <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.built}</p>
                 </div>
 
                 <div>
-                  <span className="text-xs font-mono tracking-widest text-green-400/70">
-                    VALUE
-                  </span>
-                  <p className="text-sm text-ink-200 leading-relaxed mt-1">
-                    {project.value}
-                  </p>
+                  <span className="text-xs font-mono tracking-widest text-green-400/70">VALUE</span>
+                  <p className="text-sm text-ink-200 leading-relaxed mt-1">{project.value}</p>
                 </div>
               </div>
 
@@ -331,10 +312,7 @@ export default function Projects() {
       </div>
 
       {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
+        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
     </section>
   );

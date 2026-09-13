@@ -55,19 +55,28 @@ const PROJECTS: ProjectData[] = [
  */
 const PROJECT_SCREENSHOTS: Record<string, string[]> = {
   p3: [
-    'https://raw.githubusercontent.com/suyogcmpl25-cmd/PORTFOLIO/main/lead-workflow.png',
-    'https://raw.githubusercontent.com/suyogcmpl25-cmd/PORTFOLIO/main/lead-classify.png',
-    'https://raw.githubusercontent.com/suyogcmpl25-cmd/PORTFOLIO/main/lead-llm-chain.png',
+    new URL('../../lead-workflow.png', import.meta.url).href,
+    new URL('../../lead-classify.png', import.meta.url).href,
+    new URL('../../lead-llm-chain.png', import.meta.url).href,
   ],
 
   p1: [
-    'https://raw.githubusercontent.com/suyogcmpl25-cmd/PORTFOLIO/main/Feedback%20Routing%20%2B%20Review%20Reply.png',
-    'https://raw.githubusercontent.com/suyogcmpl25-cmd/PORTFOLIO/main/Post-Visit%20Review%20Request.png',
-    'https://raw.githubusercontent.com/suyogcmpl25-cmd/PORTFOLIO/main/Feedback%20sheet%20updated.png',
+    new URL(
+      '../../Feedback Routing + Review Reply.png',
+      import.meta.url
+    ).href,
+    new URL(
+      '../../Post-Visit Review Request.png',
+      import.meta.url
+    ).href,
+    new URL(
+      '../../Feedback sheet updated.png',
+      import.meta.url
+    ).href,
   ],
 
   p2: [
-    'https://raw.githubusercontent.com/suyogcmpl25-cmd/PORTFOLIO/main/AI%20Email%20Reply.png',
+    new URL('../../AI Email Reply.png', import.meta.url).href,
   ],
 };
 

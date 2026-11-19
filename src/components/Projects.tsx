@@ -91,11 +91,11 @@ function ProjectModal({
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-[60] flex items-center justify-center sm:p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="glass-strong rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-8 relative"
+        className="glass-strong rounded-none sm:rounded-2xl max-w-5xl w-full h-full sm:h-auto sm:max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -353,11 +353,39 @@ export default function Projects() {
 
       {/* Mobile vertical cards */}
       <div className="lg:hidden px-6 pb-20 space-y-6">
-        {PROJECTS.map((project) => (
+        {PROJECTS.map((project) => {
+          const screenshots = PROJECT_SCREENSHOTS[project.id] || [];
+          return (
           <div
             key={project.id}
             className="glass rounded-2xl overflow-hidden"
           >
+            {project.imageUrl && (
+              <div className="relative h-44 overflow-hidden">
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover opacity-40"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-ink-900/80 via-ink-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-transparent to-transparent" />
+
+                <div className="absolute bottom-4 left-4 right-4 z-10">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 rounded-full text-xs font-mono border border-white/10 bg-black/40 backdrop-blur-sm text-ink-100"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="p-6 space-y-4">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-sm text-accent-400 tracking-widest">
@@ -413,7 +441,8 @@ export default function Projects() {
               </button>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {selectedProject && (

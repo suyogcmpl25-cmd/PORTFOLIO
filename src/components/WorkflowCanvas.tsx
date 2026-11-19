@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useIsDesktop } from '@/hooks/useIsDesktop';
 
 interface Node {
   id: string;
@@ -84,6 +85,7 @@ interface WorkflowCanvasProps {
 }
 
 export default function WorkflowCanvas({ scrollProgress, className }: WorkflowCanvasProps) {
+  const isDesktop = useIsDesktop();
   const [activePath, setActivePath] = useState(0);
   const [signalPos, setSignalPos] = useState({ x: 140, y: 144 });
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
@@ -92,6 +94,8 @@ export default function WorkflowCanvas({ scrollProgress, className }: WorkflowCa
   const parallaxRaf = useRef(0);
 
   useEffect(() => {
+    if (!isDesktop) return;
+
     const onMove = (e: MouseEvent) => {
       mouseRef.current = {
         x: (e.clientX / window.innerWidth - 0.5) * 2,
@@ -113,7 +117,7 @@ export default function WorkflowCanvas({ scrollProgress, className }: WorkflowCa
       window.removeEventListener('mousemove', onMove);
       cancelAnimationFrame(parallaxRaf.current);
     };
-  }, []);
+  }, [isDesktop]);
 
   useEffect(() => {
     let raf = 0;
@@ -142,8 +146,8 @@ export default function WorkflowCanvas({ scrollProgress, className }: WorkflowCa
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  const scrollY = scrollProgress * 200;
-  const scrollOpacity = Math.max(0, 1 - scrollProgress * 2.5);
+  const scrollY = isDesktop ? scrollProgress * 200 : 0;
+  const scrollOpacity = isDesktop ? Math.max(0, 1 - scrollProgress * 2.5) : 1;
 
   const currentPath = PATHS[activePath];
   const fullPath = buildPath(currentPath);

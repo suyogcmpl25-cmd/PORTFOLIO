@@ -49,14 +49,14 @@ export default function Hero({ scrollProgress, onBookAudit }: HeroProps) {
             </div>
           </div>
 
-          <div className="relative h-[400px] lg:h-[500px] hidden lg:block overflow-hidden">
+          <div className="relative h-72 sm:h-96 lg:h-[500px] overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center">
               <WorkflowCanvas scrollProgress={scrollProgress} className="w-full h-full max-w-[640px]" />
             </div>
           </div>
         </div>
 
-        <div className="mt-16 flex justify-center">
+        <div className="mt-10 lg:mt-16 flex justify-center">
           <div className="flex flex-col items-center gap-2 text-ink-300 animate-float-slow">
             <span className="text-xs font-mono tracking-widest">SCROLL</span>
             <div className="w-px h-12 bg-gradient-to-b from-ink-300 to-transparent" />

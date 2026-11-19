@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
@@ -34,6 +34,8 @@ const FAQS = [
 ];
 
 function FaqItem({ item, isOpen, onToggle }: { item: typeof FAQS[0]; isOpen: boolean; onToggle: () => void }) {
+  const answerRef = useRef<HTMLParagraphElement>(null);
+
   return (
     <div className="border-b border-white/8 last:border-0">
       <button
@@ -49,9 +51,12 @@ function FaqItem({ item, isOpen, onToggle }: { item: typeof FAQS[0]; isOpen: boo
       </button>
       <div
         className="overflow-hidden transition-all duration-300 ease-out"
-        style={{ maxHeight: isOpen ? '200px' : '0px', opacity: isOpen ? 1 : 0 }}
+        style={{
+          maxHeight: isOpen ? `${(answerRef.current?.scrollHeight ?? 200) + 24}px` : '0px',
+          opacity: isOpen ? 1 : 0,
+        }}
       >
-        <p className="text-sm text-ink-200 leading-relaxed pb-5 pr-12">{item.answer}</p>
+        <p ref={answerRef} className="text-sm text-ink-200 leading-relaxed pb-5 sm:pr-12">{item.answer}</p>
       </div>
     </div>
   );

@@ -71,7 +71,7 @@ export default function AuditModal({ isOpen, onClose }: AuditModalProps) {
       className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
       onClick={handleBackdropClick}
     >
-      <div className="glass-strong rounded-2xl max-w-lg w-full p-8 relative animate-fade-in-up">
+      <div className="glass-strong rounded-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto p-6 sm:p-8 relative animate-fade-in-up">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-ink-300 hover:text-ink-50 transition-colors p-1"
